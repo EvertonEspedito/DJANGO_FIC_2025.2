@@ -1,0 +1,160 @@
+/* Global CSS Styles */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    clear: both;
+}
+
+/* Variaveis */
+:root {
+  --cor-principal: #4acb7a;
+  --cor-secundaria: #fffafa;
+  --cor-terceira: #3c489e;
+  --cor-menu : #333333;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cor-secundaria);
+    color: #333;
+    line-height: 1.6;
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+ul{
+    list-style: none;
+}
+
+/* Cabeçalho */
+
+header{
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+header h1{
+    margin: 0;
+    font-size: 2.5em;
+    float: left;
+    width: 20%;
+}
+
+header nav{
+    float: right;
+    width: 40%;
+}
+
+header nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+header nav ul li{
+    margin: 0 10px;
+}
+
+header nav ul li a{
+    color: var( --cor-menu );
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+}
+header nav ul li a:hover{
+    color: #ffffff;
+    background-color: var(--cor-menu);
+    padding: 5px 10px;
+    border-radius: 8px;
+    /* tempo de hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header .logo-site{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+
+/* Fim Cabeçalho */
+
+/* Conteúdo Site */
+
+/* Fim Conteúdo Site */
+
+/* Rodapé */
+
+footer{
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p{
+    margin: 0;
+    font-size: 1em;
+}
+footer a{
+    color: #fffafa;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+footer h3{
+    margin: 5px 0;
+    font-size: 1.5em;
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+
+footer .social-footer{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+footer .social-footer ul{
+    display: flex;
+    flex-direction: grid;
+    align-items: center;
+    justify-content: space-around;
+}
+
+footer .social-footer .menu-footer ul{
+    flex-direction: column;
+}
+footer .social-footer ul li{
+    margin: 5px 0;
+}
+
+footer .social-footer ul li a img{
+    width: 40px;
+    height: 40px;
+}
+footer .copy-footer{
+    border-top: 1px solid #ffffff;
+    padding: 10px 0;
+}
+
+
+/* Fim Rodapé */
