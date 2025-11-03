@@ -8,10 +8,10 @@
 
 /* Variaveis */
 :root {
-  --cor-principal: #4acb7a;
+  --cor-principal: #c9ff35;
   --cor-secundaria: #fffafa;
-  --cor-terceira: #3c489e;
-  --cor-menu : #333333;
+  --cor-terceira: #2a326f;
+  --cor-menu : #383838;
 }
 
 body{
@@ -91,6 +91,127 @@ header .logo-site{
 /* Fim Cabeçalho */
 
 /* Conteúdo Site */
+
+/* Banner Principal */
+main .banner-principal{
+    background-image: url('../img/banner_main.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    color: #ffffff;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+main .banner-principal .conteudo-banner{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    float: left;
+    position: relative;
+    top: 40%;
+}
+main .banner-principal .conteudo-banner h2{
+    font-size: 3.3em;
+    margin-bottom: 20px;
+}
+main .banner-principal .conteudo-banner p{
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+main .banner-principal .conteudo-banner a{
+    display: inline-block;
+    background-color: var(--cor-principal);
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+main .banner-principal .conteudo-banner a:hover{
+    background-color: #333;
+    color: #fffafa;
+    border: 2px solid var(--cor-principal);
+}
+/* Fim Banner Principal */
+
+/* Quem Somos */
+
+section.quem-somos{
+    padding: 40px 20px;
+    text-align: justify;
+    background-color: var(--cor-secundaria);
+    color: #333;
+    max-height:  600px;
+}
+section.quem-somos h2{
+    font-size: 2.5em;
+    text-align: center;
+}
+section.quem-somos p{
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    max-width: 800px;
+    line-height: 1.8;
+}
+
+section.quem-somos .conteudo-quem-somos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+section.quem-somos  .conteudo-quem-somos img{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+/* Fim Quem Somos */
+
+/* Nossos Serviços */
+section.nossos-servicos{
+    padding: 60px 2%;
+    background-color: var(--cor-terceira);
+    color: #fffafa;
+    text-align: center;
+}
+section.nossos-servicos h2{
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+section.nossos-servicos .lista-servicos{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+section.nossos-servicos .servico-item{
+    background-color: var(--cor-principal);
+    color: var(--cor-menu);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 23%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+section.nossos-servicos .servico-item:hover{
+    transform: translateY(-10px);
+}
+section.nossos-servicos .servico-item h3{
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+section.nossos-servicos .serservico-item  p{
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* Fim Nossos Serviços */
 
 /* Fim Conteúdo Site */
 
