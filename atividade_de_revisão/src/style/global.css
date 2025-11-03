@@ -140,9 +140,6 @@ footer .social-footer ul{
     justify-content: space-around;
 }
 
-footer .social-footer .menu-footer ul{
-    flex-direction: column;
-}
 footer .social-footer ul li{
     margin: 5px 0;
 }
