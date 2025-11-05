@@ -12,6 +12,7 @@
   --cor-secundaria: #fffafa;
   --cor-terceira: #2a326f;
   --cor-menu : #383838;
+  --header-height: 70px; /* ajuste conforme o tamanho real do header */
 }
 
 body{
@@ -19,6 +20,7 @@ body{
     background-color: var(--cor-secundaria);
     color: #333;
     line-height: 1.6;
+    padding-top: var(--header-height);
 }
 
 a{
@@ -32,14 +34,23 @@ ul{
 
 /* Cabeçalho */
 
+/* Header fixo e semi-transparente */
 header{
-    background-color: var(--cor-principal);
-    color: #ffffff;
-    padding: 10px 0;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: rgba(201,255,53,0.85); /* cor principal com transparência */
+    color: #ffffff;
+    z-index: 10000;
+    backdrop-filter: blur(6px); /* opcional, dá efeito de desfoque */
+    transition: background-color 200ms ease, backdrop-filter 200ms ease;
+    /* remova float/width antigos se existirem */
 }
 
 header h1{
@@ -87,6 +98,75 @@ header .logo-site{
     margin-right: 10px;
 }
 
+/* Menu Mobile */
+.menu-mobile{
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    justify-content: space-between;
+    margin-right: 20px;
+    background-image: url('../img/menu.png');
+    background-size: cover;
+    background-position: center;
+    float: right;
+}
+
+
+.menu-flutuante{
+    /* ficou full-width e escondido acima da viewport */
+    position: fixed;
+    top: 0; /* começa do topo do viewport */
+    left: 0;
+    width: 100%;
+    height: calc(65vh - var(--header-height)); /* ocupa o restante da tela */
+    transform: translateY(-100%);
+    background-color: var(--cor-terceira);
+    /* padding-top deixa espaço para o header; ajuste conforme necessário */
+    padding: calc(var(--header-height)) 16px 20px; /* espaço para o header fixo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    transition: transform 250ms ease, opacity 250ms ease;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 0 0 8px 8px;
+}
+
+/* ao adicionar .visivel o menu desce */
+.menu-flutuante.visivel{
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Layout interno (coluna, centralizado) */
+.menu-flutuante ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.menu-flutuante ul li{
+    margin: 6px 0;
+}
+.menu-flutuante ul li a{
+    color: var(--cor-secundaria);
+    padding: 6px 10px;
+    display: block;
+}
+
+/* animação */
+@keyframes slideIn{
+    from { transform: translateY(-50%) translateX(100%); opacity: 0; }
+    to   { transform: translateY(-50%) translateX(0); opacity: 1; }
+}
+
+
+/*Fim Menu Mobile */
 
 /* Fim Cabeçalho */
 
@@ -206,7 +286,7 @@ section.nossos-servicos .servico-item h3{
     font-size: 1.8em;
     margin-bottom: 10px;
 }
-section.nossos-servicos .serservico-item  p{
+section.nossos-servicos .servico-item  p{
     font-size: 1em;
     line-height: 1.6;
 }
@@ -219,7 +299,7 @@ section.nossos-servicos .serservico-item  p{
 
 footer{
     background-color: var(--cor-principal);
-    color: #ffffff;
+    color: var(--cor-menu);
     text-align: center;
     padding: 10px 0;
     position: relative;
@@ -256,7 +336,7 @@ footer .social-footer{
 
 footer .social-footer ul{
     display: flex;
-    flex-direction: grid;
+    flex-direction: row; /* corrige 'grid' inválido */
     align-items: center;
     justify-content: space-around;
 }
@@ -276,3 +356,77 @@ footer .copy-footer{
 
 
 /* Fim Rodapé */
+
+/*  Responsividade */
+@media (max-width: 768px) {
+
+    header h1{
+        font-size: 0em;
+        width: 40%;
+
+    }
+    header nav{
+        width: 60%;
+    }
+    header nav ul{
+        display: none;
+    }
+    main .banner-principal .conteudo-banner{
+        top: 10%;
+    }
+    main .banner-principal .conteudo-banner h2{
+        font-size: 2.2em;
+    }
+    main .banner-principal .conteudo-banner p{
+        font-size: 1em;
+    }
+    main .banner-principal .conteudo-banner a{
+        font-size: 1.2em;
+    }
+    section.quem-somos h2{
+        font-size: 1.8em;
+    }
+    section.quem-somos p{
+        font-size: 1em;
+    }
+    section.nossos-servicos h2{
+        font-size: 2em;
+    }
+    section.nossos-servicos .servico-item h3{
+        font-size: 1.5em;
+    }
+    section.nossos-servicos .servico-item p{
+        font-size: 0.9em;
+    }
+
+    .menu-mobile{
+        display: flex;
+    }
+    section.quem-somos .conteudo-quem-somos{
+        flex-direction: column;
+    }
+    section.quem-somos  .conteudo-quem-somos img{
+        max-width: 70%;
+    }
+    section.nossos-servicos .servico-item{
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 1130px){
+    section.nossos-servicos .servico-item{
+        width: 45%;
+    }
+
+}
+
+/* Fim Responsividade */
+
+
+
+/* Indicador visual do botão */
+.menu-mobile.ativo{
+    filter: brightness(0.9);
+    transform: scale(0.98);
+}

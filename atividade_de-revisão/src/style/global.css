@@ -1,0 +1,39 @@
+.menu-flutuante{
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: var(--cor-principal);
+    padding: 10px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* === Novo: mostrar quando o JS adicionar .visivel === */
+.menu-flutuante.visivel{
+    display: block;
+    animation: slideIn 0.25s ease;
+}
+
+/* Layout interno */
+.menu-flutuante ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.menu-flutuante ul li{
+    margin: 6px 0;
+}
+.menu-flutuante ul li a{
+    color: #333;
+    padding: 6px 10px;
+    display: block;
+}
+
+/* animação */
+@keyframes slideIn{
+    from { transform: translateY(-50%) translateX(100%); opacity: 0; }
+    to   { transform: translateY(-50%) translateX(0); opacity: 1; }
+}
