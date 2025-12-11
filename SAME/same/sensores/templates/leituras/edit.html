@@ -1,0 +1,23 @@
+{% extends 'painel.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Editar Leitura</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Temperatura</label>
+            <input type="number" step="0.01" value="{{ leitura.temperatura }}" class="form-control" name="temperatura">
+        </div>
+
+        <div class="mb-3">
+            <label>Umidade</label>
+            <input type="number" step="0.01" value="{{ leitura.umidade }}" class="form-control" name="umidade">
+        </div>
+
+        <button class="btn btn-primary">Salvar Alterações</button>
+    </form>
+</div>
+
+{% endblock %}

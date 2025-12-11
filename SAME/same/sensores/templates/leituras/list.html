@@ -1,0 +1,33 @@
+{% extends 'painel.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Leituras</h2>
+    <a href="{% url 'create_leitura' %}" class="btn btn-primary mb-3">Nova Leitura</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Temperatura</th>
+                <th>Umidade</th>
+                <th>Data/Hora</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leitura in leituras %}
+            <tr>
+                <td>{{ leitura.temperatura }}°C</td>
+                <td>{{ leitura.umidade }}%</td>
+                <td>{{ leitura.data_hora }}</td>
+                <td>
+                    <a href="{% url 'edit_leitura' leitura.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'delete_leitura' leitura.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
