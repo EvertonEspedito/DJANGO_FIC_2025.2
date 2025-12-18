@@ -1,0 +1,43 @@
+{% extends 'saude/base.html' %}
+
+{% block content %}
+<h2>Dashboard</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="card text-bg-danger mb-3">
+      <div class="card-body">
+        <h5>Urgentes</h5>
+        <h2>{{ urgentes }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-bg-warning mb-3">
+      <div class="card-body">
+        <h5>Alta</h5>
+        <h2>{{ altos }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-bg-info mb-3">
+      <div class="card-body">
+        <h5>Média</h5>
+        <h2>{{ medios }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card text-bg-success mb-3">
+      <div class="card-body">
+        <h5>Baixa</h5>
+        <h2>{{ baixos }}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
