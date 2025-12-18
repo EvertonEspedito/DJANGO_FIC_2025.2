@@ -1,0 +1,7 @@
+#!/home/everton/Documentos/PROJETOS/DJANGO_FIC_2025.2/projetoFinal/django_saude/venv/bin/python3
+import sys
+from django.core.management import execute_from_command_line
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(execute_from_command_line())

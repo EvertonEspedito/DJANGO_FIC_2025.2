@@ -26,9 +26,7 @@ SECRET_KEY = 'django-insecure-2pj5s_9uuvlv_#q)%&p4bae*f6w5fhasaxbj=wlavpcfap1*t_
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "10.103.34.163",
+    '*'
 ]
 
 
@@ -124,5 +122,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

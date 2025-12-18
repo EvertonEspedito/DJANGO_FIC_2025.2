@@ -1,43 +1,23 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 from .models import Leitura
 
-def list_leituras(request):
-    leituras = Leitura.objects.all().order_by('-data_hora')
-    return render(request, "leituras/list.html", {"leituras": leituras})
-
-
-def create_leitura(request):
+@csrf_exempt
+def receber_leitura(request):
     if request.method == "POST":
-        temperatura = request.POST.get("temperatura")
-        umidade = request.POST.get("umidade")
+        data = json.loads(request.body)
 
-        Leitura.objects.create(
-            temperatura=temperatura,
-            umidade=umidade
+        leitura = Leitura.objects.create(
+            temperatura=data["temperatura"],
+            umidade=data["umidade"]
         )
 
-        return redirect("list_leituras")
+        return JsonResponse({"status": "ok"})
 
-    return render(request, "leituras/create.html")
-
-
-def edit_leitura(request, id):
-    leitura = get_object_or_404(Leitura, id=id)
-
-    if request.method == "POST":
-        leitura.temperatura = request.POST.get("temperatura")
-        leitura.umidade = request.POST.get("umidade")
-        leitura.save()
-
-        return redirect("list_leituras")
-
-    return render(request, "leituras/edit.html", {"leitura": leitura})
-
-
-def delete_leitura(request, id):
-    leitura = get_object_or_404(Leitura, id=id)
-    leitura.delete()
-    return redirect("list_leituras")
-
-def dashboard(request):
-    return render(request, "dashboard.html")
+    if request.method == "GET":
+        leituras = list(
+            Leitura.objects.values("id", "temperatura", "umidade", "data_hora")
+            .order_by("-data_hora")
+        )
+        return JsonResponse(leituras, safe=False)

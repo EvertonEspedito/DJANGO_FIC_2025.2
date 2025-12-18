@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Saúde</title>
+
+    <!-- Bootstrap CSS -->
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet"
+    >
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'listar_pacientes' %}">
+      Sistema de Saúde
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'listar_pacientes' %}">
+            Pacientes
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">
+            Dashboard
+          </a>
+        </li>
+
+        {% if perms.saude.view_paciente %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'relatorio_atendidos' %}">
+            Relatório
+          </a>
+        </li>
+        {% endif %}
+
+      </ul>
+
+      {% if user.is_authenticated %}
+      <span class="navbar-text text-white me-3">
+        {{ user.username }}
+      </span>
+
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn btn-light btn-sm">Sair</button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

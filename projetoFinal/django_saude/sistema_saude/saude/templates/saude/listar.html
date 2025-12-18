@@ -1,0 +1,58 @@
+{% extends 'saude/base.html' %}
+
+{% block content %}
+<h2>Lista de Pacientes</h2>
+
+{% if perms.saude.add_paciente %}
+    <a href="{% url 'cadastrar_paciente' %}" class="btn btn-success">Novo Paciente</a>
+{% endif %}
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Sintomas</th>
+      <th>Prioridade</th>
+      <th>Data / Hora</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for paciente in pacientes %}
+        <tr
+            {% if paciente.prioridade == 'U' %} class="table-danger"
+            {% elif paciente.prioridade == 'A' %} class="table-warning"
+            {% elif paciente.prioridade == 'M' %} class="table-info"
+            {% else %} class="table-success"
+            {% endif %}
+        >
+                <td>{{ paciente.nome }}</td>
+                <td>{{ paciente.idade }}</td>
+                <td>{{ paciente.sintomas }}</td>
+                <td>{{ paciente.get_prioridade_display }}</td>
+                <td>{{ paciente.data_consulta|date:"d/m/Y H:i" }}</td>
+                <td>
+                <a href="{% url 'editar_paciente' paciente.id %}" class="btn btn-warning btn-sm">Editar</a>
+                {% if perms.saude.delete_paciente %}
+                    <a href="{% url 'excluir_paciente' paciente.id %}" class="btn btn-danger btn-sm">Excluir</a>
+                {% endif %}
+
+                {% if perms.saude.change_paciente and not paciente.atendido %}
+                    <a href="{% url 'confirmar_atendimento' paciente.id %}" class="btn btn-success btn-sm">
+                        Confirmar Atendimento
+                    </a>
+                {% endif %}
+
+                {% if paciente.atendido %}
+                    <span class="badge bg-secondary">Atendido</span>
+                {% endif %}
+
+            </td>
+        </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+{% endblock %}
