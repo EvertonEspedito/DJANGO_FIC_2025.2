@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}SCP - Sistema de Cadastro de Pessoas{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'learninglogs/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'learninglogs:index' %}" > <h1>{% block header %}SCP{% endblock %}</h1> </a>
+        <nav>
+            <a href="{% url 'learninglogs:index' %}">Início</a> |
+            <a href="{% url 'learninglogs:sobre' %}">Sobre</a> |
+            <a href="">Sair</a> 
+        </nav>
+    </header>
+
+    {% block content %}{% endblock content %}
+
+    <footer>
+        <p>&copy; {% now "Y" %} SCP - Sistema de Cadastro de Pessoas </p>
+    </footer>
+</body>
+</html>

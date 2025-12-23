@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+
+{% block content %}
+    <div class="container">
+        <h2>Bem-vindo ao Sistema de Cadastro de Pessoas (SCP)</h2>
+        <p>Use este sistema para gerenciar e organizar informações sobre pessoas cadastradas.</p>
+        <ul>
+            <li><a href="">Cadastrar uma pessoa nova</a></li>
+            <li><a href="{% url 'learninglogs:pessoas' %}">Ver Pessoas cadastradas.</a></li>
+        </ul>
+    </div>
+{% endblock content %}
